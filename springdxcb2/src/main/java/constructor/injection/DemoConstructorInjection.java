@@ -1,27 +1,19 @@
-package dxc.b2;
+package constructor.injection;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-
-import constructor.injection.Employee;
-
+import dxc.b2.Springdxcb2Application;
 
 @SpringBootApplication
-public class Springdxcb2Application {
-
+public class DemoConstructorInjection {
 	private static final String APPLICATION_CONTEXT_XML = "fanKnob.xml";
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(Springdxcb2Application.class, args);
 
-		//driveVehicle();
 		BeanFactory factory = loadContext();
 
 		Employee employee = (Employee)factory.getBean("employee");  
@@ -29,13 +21,9 @@ public class Springdxcb2Application {
 	}
 
 
-
 	private static BeanFactory loadContext() {
 		Resource resource = new ClassPathResource(APPLICATION_CONTEXT_XML);  
 		BeanFactory factory = new XmlBeanFactory(resource);
 		return factory;
 	}
-
 }
-
-
